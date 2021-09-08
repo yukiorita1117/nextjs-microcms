@@ -52,6 +52,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 };
 
 // ISRやSSRだとCDNにキャッシュをため、useSWRだとlocal PC内のメモリに保存する。
+// getStaticPropsらは Nextのサーバー / useSWRはFE(クライアント) で動作する。
 
 export default function Page(props: any) {
   console.log(props);

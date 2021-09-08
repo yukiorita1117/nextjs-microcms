@@ -23,6 +23,7 @@ export default function Page(props: any) {
   console.log(props);
   return (
     <div className={styles.container}>
+      <h1>この画面はSSRです。</h1>
       {props.data.contents.map((content: any) => (
         <p key={content.id}>{content.title}</p>
       ))}
