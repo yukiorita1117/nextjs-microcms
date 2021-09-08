@@ -1,5 +1,5 @@
 import React from "react";
-// import styles from "../styles/Home.module.css";
+import styles from "../../styles/Home.module.css";
 import { client } from "@/utils/client";
 
 import type { GetServerSideProps, GetStaticProps, GetStaticPaths } from "next";
@@ -44,12 +44,14 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     contentId: contentId,
   });
 
-  // revalidate optionを付与すればbuild時でなく、userの訪問によって取得し直してくれる。
+  // revalidate optionを付与すればbuild時でなく、userの訪問によって生成し直してくれる。
   return {
     props: { data },
     revalidate: 30,
   };
 };
+
+// ISRやSSRだとCDNにキャッシュをため、useSWRだとlocal PC内のメモリに保存する。
 
 export default function Page(props: any) {
   console.log(props);
@@ -60,7 +62,7 @@ export default function Page(props: any) {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <div dangerouslySetInnerHTML={{ __html: props.data.body }}></div>
     </div>
   );

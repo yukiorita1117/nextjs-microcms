@@ -1,5 +1,5 @@
 import React from "react";
-// import styles from "../styles/Home.module.css";
+import styles from "../../styles/Home.module.css";
 import { client } from "@/utils/client";
 
 import type { GetServerSideProps, GetStaticProps } from "next";
@@ -33,7 +33,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
 export default function Page(props: any) {
   console.log(props);
   return (
-    <div>
+    <div className={styles.container}>
       <h1>〜記事一覧〜</h1>
       {props.data.contents.map((content: any) => (
         <div key={content.id}>
