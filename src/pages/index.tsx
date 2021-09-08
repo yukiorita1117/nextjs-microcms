@@ -24,7 +24,7 @@ export default function Page(props: any) {
   return (
     <div className={styles.container}>
       {props.data.contents.map((content: any) => (
-        <p>{content.title}</p>
+        <p key={content.id}>{content.title}</p>
       ))}
       {/* <Button /> */}
     </div>
